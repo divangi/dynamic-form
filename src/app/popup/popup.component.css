@@ -1,0 +1,28 @@
+.drop-box{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.75);
+    z-index: 50px;
+}
+
+.alert-box{
+    position: fixed;
+    top: 30vh;
+    left: 25vw;
+    width: 50vw;
+    padding: 16px;
+    background-color: white;
+    z-index: 100;
+}
+
+.alert-box-action{
+    text-align: right;
+}
+
+.modal{
+    display: block;
+    background-color: rgba(0,0,0,0.5);
+}

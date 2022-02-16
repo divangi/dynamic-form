@@ -1,0 +1,89 @@
+<!-- <div class="drop-box" (click)="closePopup()">
+    <div class="alert-box">
+        <p>{{message}}</p>
+        <div class="alert-box-action">
+            <button type="button" class="btn btn-danger" (click)="closePopup()">CLOSE</button>
+        </div>
+    </div>
+</div> -->
+<!-- ********************* modal-header ********************* -->
+<div class="modal fade show" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5
+          class="modal-title"
+          id="exampleModalLongTitle"
+          [ngStyle]="modalObj?.headerStyles"
+        >
+          {{ modalObj?.header ? modalObj?.header : "Popup Heading" }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="btnClickEvent('close')"
+        ></button>
+      </div>
+      <h6>{{ modalObj.subHeader }}</h6>
+
+      <!-- ********************* modal-content ********************* -->
+
+      <div class="modal-body">
+        <ng-container *ngIf="modalObj?.content; else outsideContent">{{
+          modalObj.content
+        }}</ng-container>
+        <ng-template #outsideContent>
+          <ng-content></ng-content>
+        </ng-template>
+      </div>
+
+      <!-- ********************* modal-footer ********************* -->
+
+      <div
+        class="modal-footer"
+        [ngClass]="{
+          'justify-content-center': modalObj?.btnAlign == 'center',
+          'justify-content-start': modalObj?.btnAlign == 'start'
+        }"
+      >
+        <button
+          *ngIf="modalObj.extraBtn"
+          class="btn btn-secondary"
+          type="button"
+          (click)="btnClickEvent('extra')"
+        >
+          {{ modalObj.extraBtn }}
+        </button>
+        <button
+          *ngIf="modalObj.cancelBtn"
+          type="button"
+          class="btn btn-secondary"
+          [ngStyle]="modalObj?.cancelBtnStyles"
+          data-dismiss="modal"
+          (click)="btnClickEvent('close')"
+        >
+          {{
+            modalObj.cancelBtn && modalObj.cancelBtn !== true
+              ? modalObj.cancelBtn
+              : "Cancel"
+          }}
+        </button>
+        <button
+          *ngIf="modalObj.successBtn"
+          type="button"
+          class="btn btn-success"
+          [ngStyle]="modalObj?.successBtnStyles"
+          (click)="btnClickEvent('continue')"
+        >
+          {{
+            modalObj.successBtn && modalObj.successBtn !== true
+              ? modalObj.successBtn
+              : "Save"
+          }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
